@@ -1,3 +1,3 @@
-TOKEN = "Your Bot API TOKEN"
-Admin = Your Telegram ID
-Channel = Your Channel Id
+TOKEN = "6753588194:AAHiEnMoA2sq9oJmjxbW9Hg4kLPT2-snr1g"
+Admin = 6543698942
+Channel = -1002053000609
