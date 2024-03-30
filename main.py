@@ -15,9 +15,9 @@ async def main() -> None:
     dp.shutdown.register(handlers.on_shutdown)
     dp.message.register(handlers.cmd_start, Command("start"))
     dp.message.register(handlers.new_chat_member_answer,
-                        and_f(F.chat.type == "group" or F.chat.type == "supergroup", F.new_chat_members))
+                        and_f(F.chat.type == "supergroup", F.new_chat_members))
     dp.message.register(handlers.left_chat_member_answer,
-                        and_f(F.chat.type == "group" or F.chat.type == "supergroup", F.left_chat_member))
+                        and_f(F.chat.type == "supergroup", F.left_chat_member))
     dp.message.register(handlers.mute_member_answer,
                         and_f(F.chat.type == "supergroup", and_f(F.text == "/mute", F.reply_to_message)))
     dp.message.register(handlers.unmute_member_answer,
