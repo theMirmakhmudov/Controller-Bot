@@ -53,7 +53,7 @@ async def left_chat_member_answer(message: types.Message, bot: Bot):
 async def mute_member_answer(message: types.Message, bot: Bot):
     try:
         user_status = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-        if user_status.status == "creator" or user_status == "administrator":
+        if user_status.status == "creator" or user_status.status == "administrator":
             user_id = message.reply_to_message.from_user.id
             permissions = ChatPermissions(can_send_messages=False)
             await message.chat.restrict(user_id, permissions)
@@ -72,7 +72,7 @@ async def mute_member_answer(message: types.Message, bot: Bot):
 
 async def unmute_member_answer(message: types.Message, bot: Bot):
     user_status = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-    if user_status.status == "creator" or user_status == "administrator":
+    if user_status.status == "creator" or user_status.status == "administrator":
         user_id = message.reply_to_message.from_user.id
         permissions = ChatPermissions(can_send_messages=True)
         await message.chat.restrict(user_id, permissions)
@@ -89,7 +89,7 @@ async def unmute_member_answer(message: types.Message, bot: Bot):
 
 async def deleted_messages(message: types.Message, bot: Bot):
     user_status = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-    if user_status.status == "creator" or user_status == "administrator":
+    if user_status.status == "creator" or user_status.status == "administrator":
         mes = message.reply_to_message.message_id
         await bot.delete_message(chat_id=message.chat.id, message_id=mes, request_timeout=15)
         await message.delete()
@@ -105,7 +105,7 @@ async def get_channel_id(message: types.Message):
 async def ban_member_answer(message: types.Message, bot: Bot):
     try:
         user_status = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-        if user_status.status == "creator" or user_status == "administrator":
+        if user_status.status == "creator" or user_status.status == "administrator":
             user_id = message.reply_to_message.from_user.id
             await message.chat.ban_sender_chat(user_id)
             mes = await message.answer(
@@ -123,7 +123,7 @@ async def ban_member_answer(message: types.Message, bot: Bot):
 
 async def unban_member_answer(message: types.Message, bot: Bot):
     user_status = await bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-    if user_status.status == "creator" or user_status == "administrator":
+    if user_status.status == "creator" or user_status.status == "administrator":
         user_id = message.reply_to_message.from_user.id
         await message.chat.unban_sender_chat(user_id)
         mes = await message.answer(
