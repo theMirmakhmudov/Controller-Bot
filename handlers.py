@@ -32,6 +32,7 @@ Assalomu Alaykum {message.from_user.mention_html()} ❗️
 
 
 async def new_chat_member_answer(message: types.Message, bot: Bot):
+    await message.delete()
     for new_chat_member in message.new_chat_members:
         mes = await message.answer_photo(
             "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/07/computer-coding.jpg",
@@ -42,6 +43,7 @@ async def new_chat_member_answer(message: types.Message, bot: Bot):
 
 
 async def left_chat_member_answer(message: types.Message, bot: Bot):
+    await message.delete()
     mes = await message.answer_photo(
         "https://image.shutterstock.com/image-vector/3d-isometric-flat-vector-conceptual-260nw-2373700103.jpg",
         f"<b>Xayir, {message.left_chat_member.mention_html()}</b>")
