@@ -32,6 +32,9 @@ async def main() -> None:
 
     bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
     await dp.start_polling(bot, polling_timeout=1)
+    await bot.set_my_commands([
+        types.BotCommand(command="start", description="♻️ Botni qayta ishga tushurish")
+    ])
 
 
 if __name__ == "__main__":
