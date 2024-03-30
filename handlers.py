@@ -19,7 +19,6 @@ async def on_shutdown(bot: Bot) -> None:
 
 async def cmd_start(message: types.Message, bot: Bot):
     bot_user = await bot.get_chat_member(message.chat.id, TOKEN.split(":")[0])
-
     await message.answer(f"""<b>
 Assalomu Alaykum {message.from_user.mention_html()} ❗️
         
@@ -67,6 +66,7 @@ async def mute_member_answer(message: types.Message, bot: Bot):
             await bot.delete_message(chat_id=message.chat.id, message_id=mes1.message_id)
         else:
             mes2 = await message.answer("<b>You're not Admin ❌</b>")
+            time.sleep(10)
             await bot.delete_message(chat_id=message.chat.id, message_id=mes2.message_id)
     except:
         await message.answer("<b>Siz Adminni mute qila olmaysiz ❌</b>")
